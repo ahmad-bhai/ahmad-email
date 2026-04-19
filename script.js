@@ -1,6 +1,6 @@
 // --- Security Check Start ---
 (function() {
-    const authorizedDomain = "ahmad-email.vercel.app/";
+    const authorizedDomain = "ahmad-email.vercel.app";
     const currentHost = window.location.hostname;
 
     // Agar domain match nahi karta toh /error par bhej do
