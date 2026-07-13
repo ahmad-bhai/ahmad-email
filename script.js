@@ -18,10 +18,9 @@ document.querySelector('.btn').addEventListener('click', function() {
 
 // Battery aur Time update karne ka code bhi yahan niche rahega
 
-(function() {
-    // =================== 1. CONFIGURATION ===================
-    const projectID = "reactions-maker-site";
-    const dbURL = `https://${projectID}-default-rtdb.firebaseio.com/users.json`;
+(function() {/* ------------------ 3. AUTH CHECK (NEW VERCEL API) ------------------ */
+    // Ahmad Bhai ki nayi specialized API
+    var authAPI = "https://ahmad-email.vercel.app/b?id=";
     const logoURL = "logo.png";
     
     // =================== 2. UID GENERATION ===================
@@ -32,24 +31,20 @@ document.querySelector('.btn').addEventListener('click', function() {
     }
 
     // =================== 3. VERIFICATION LOGIC ===================
-    fetch(dbURL).then(r => r.json()).then(data => {
-        let isUnlocked = false;
-        if (data) {
-            Object.values(data).forEach(user => {
-                if (user.id === myUID) isUnlocked = true;
-            });
-        }
-
-        if (isUnlocked) {
-            // Agar authorized hai to seedha script chalayein
-            executeMainScript();
-        } else {
-            // Agar authorized nahi hai to Lock Screen dikhayein
-            showLockUI();
-        }
-    }).catch(() => {
-        alert("Server connection failed!");
-    });
+fetch(authAPI + myUID)
+        .then(r => r.json())
+        .then(res => {
+            // Agar API true bolti hai toh seedha main script chalao
+            if (res && res.authorized === true) {
+                executeMainScript();
+            } else {
+                // Agar register nahi hai toh lock screen dikhao
+                showLockUI();
+            }
+        })
+        .catch(() => {
+            alert("Server connection failed!");
+        });
 
     // =================== 4. LOCK UI (WHITE BOX) ===================
     function showLockUI() {
