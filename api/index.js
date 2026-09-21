@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
     // --- Start Command ---
     bot.start((ctx) => {
       const firstName = ctx.from.first_name || "Dear";
-      ctx.replyWithMarkdown(`👋 *Hi ${firstName}*\n\nEnter your Quotex Account ID (only numbers) to verify your registration and unlock VIP access.\n\n*REGISTRATION LINK*\n👇👇👇\nhttps://broker-qx.pro/sign-up/?lid=1740604`);
+      ctx.replyWithMarkdown(`👋 *Hi ${firstName}!*\n\nEnter your Quotex Account ID (only numbers) to verify your registration and unlock VIP access.\n\n*REGISTRATION LINK*\n👇👇👇\nhttps://broker-qx.pro/sign-up/?lid=1740604`);
     });
 
     // --- Account Command ---
