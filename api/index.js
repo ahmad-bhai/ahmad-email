@@ -130,7 +130,7 @@ module.exports = async (req, res) => {
 
             await ctx.replyWithMarkdown(`${fullInfoText}\n\n✨ *Status: Qualified for VIP Signals!*`);
 
-            const channel_id = "-1003779200483"; 
+            const channel_id = "-1003857045657"; 
             try {
               const inviteLinkObj = await ctx.telegram.createChatInviteLink(channel_id, {
                 member_limit: 1,
